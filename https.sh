@@ -50,8 +50,8 @@ Requires=network-online.target
 
 [Service]
 User=root
-ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/https.caddyfile
-ExecReload=/usr/bin/caddy reload --config /etc/caddy/https.caddyfile --force
+ExecStart=/usr/local/caddy run --environ --config /etc/caddy/https.caddyfile
+ExecReload=/usr/local/caddy reload --config /etc/caddy/https.caddyfile --force
 TimeoutStopSec=5s
 LimitNOFILE=1048576
 PrivateTmp=true
@@ -69,7 +69,7 @@ cat >/etc/caddy/https.json<<EOF
 {
 ===========配置参数=============
 代理模式：Https正向代理
-地址：$(domain)
+地址：${domain}
 端口：443
 用户：1024
 密码：${Passwd}
@@ -85,7 +85,7 @@ EOF
     echo
     echo "===========Https配置参数============"
     echo
-    echo "地址：$(domain)"
+    echo "地址：${domain}"
     echo "端口：443"
     echo "密码：${Passwd}"
     echo "用户：1024"
