@@ -78,8 +78,6 @@ http=$domain:443, username=1024, password=$Passwd, over-tls=true, tls-verificati
 }
 EOF
 
-    clear
-
     echo
     echo "安装已经完成"
     echo
