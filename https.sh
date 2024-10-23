@@ -8,7 +8,7 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 timedatectl set-timezone Asia/Shanghai
-Passwd=$(cat /dev/urandom | head -1 | md5sum | head -c 9)
+Passwd=$(cat /dev/urandom | head -1 | md5sum | head -c 12)
 
 wget https://github.com/yeahwu/image/raw/refs/heads/master/caddy.tar.gz -O - | tar -xz -C /usr/local/
 
