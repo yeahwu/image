@@ -115,19 +115,16 @@ cat >/root/.ssh/authorized_keys<<EOF
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmEa21AfBeBXPqEh7iP+ftQi9+eSIrQJVR2k3qxU3NdWLcTfVrH6FR1QP7DO01sIxdPcLdnahSW/PF+G/Wkr8dgY8kjBAkP1wD/5AJ8LLqMoYYC0FbrhD00lRDCxmJO/dgOEEHrELNkbLfn0Q8MQvUp/fHwq8L/uadWRrNPou3SKUfvAm20Ah4jz44MZeIueOJE6ZchQUuxh/sS7fwdbTnAm6aPzJGH30B5BFp4Ayf5lU76bDIgUeVPYt0YG9LXDRxBHrXFBklxloblhD9IhWPMs1r7jRsaeNJhvMTSfHSA/zeNT7xHIJO8AVMO0H2MB7qlIVpnSf5Ku61Yn5dqSr1 yeahwu404@gmail.com
 EOF
 
-sed -ri 's/^#?PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config;
-sed -ri 's/^#?PasswordAuthentication.*/PasswordAuthentication no/g' /target/etc/ssh/sshd_config;
-sed -ri 's/^#?PubkeyAuthentication.*/PubkeyAuthentication yes/g' /target/etc/ssh/sshd_config;
-sed -ri 's/^#?AuthorizedKeysFile.*/AuthorizedKeysFile .ssh\/authorized_keys .ssh\/authorized_keys2/g' /target/etc/ssh/sshd_config;
+sed -ri 's/^#?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
+sed -ri 's/^#?PasswordAuthentication.*/PasswordAuthentication no/g' /etc/ssh/sshd_config;
+sed -ri 's/^#?PubkeyAuthentication.*/PubkeyAuthentication yes/g' /etc/ssh/sshd_config;
+sed -ri 's/^#?AuthorizedKeysFile.*/AuthorizedKeysFile .ssh\/authorized_keys .ssh\/authorized_keys2/g' /etc/ssh/sshd_config;
 
 # dns resolv.conf
-cat >/etc/resolv.conf<<EOF
-nameserver 8.8.8.8
-nameserver 8.8.4.4
-search .
-EOF
+echo -e "nameserver 8.8.8.8\search ." > /etc/resolv.conf
 
 # remove excess
 apt purge nftables apache2 fail2ban -y
+rm -f linux-config.sh
 
 sleep 3 && reboot >/dev/null 2>&1
