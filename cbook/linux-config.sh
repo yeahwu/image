@@ -28,7 +28,7 @@ alias h='history'
 EOF
 
 # vim config
-apt install vim git curl wget net-tools -y
+apt install vim git curl net-tools -y
 
 echo "set mouse-=a" > /root/.vimrc
 
@@ -123,7 +123,7 @@ sed -ri 's/^#?PubkeyAuthentication.*/PubkeyAuthentication yes/g' /etc/ssh/sshd_c
 sed -ri 's/^#?AuthorizedKeysFile.*/AuthorizedKeysFile .ssh\/authorized_keys .ssh\/authorized_keys2/g' /etc/ssh/sshd_config;
 
 # dns resolv.conf
-echo "nameserver 8.8.8.8\nsearch ." >/etc/resolv.conf
+# echo -e "nameserver 8.8.8.8\nsearch ." >/etc/resolv.conf
 
 # remove excess
 apt purge nftables apache2 fail2ban -y
