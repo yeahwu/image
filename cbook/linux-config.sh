@@ -9,6 +9,8 @@ fi
 
 timedatectl set-timezone Asia/Shanghai
 
+apt update && apt upgrade -y
+
 # bashrc config
 cat >/root/.bashrc<<EOF
 export LS_OPTIONS='--color=auto'
