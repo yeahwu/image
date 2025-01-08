@@ -12,6 +12,8 @@ Passwd=$(cat /dev/urandom | head -1 | md5sum | head -c 12)
 
 wget https://github.com/yeahwu/image/raw/refs/heads/master/caddy.tar.gz -O - | tar -xz -C /usr/local/
 
+chmod +x /usr/local/caddy
+
 echo "====输入已经DNS解析好的域名===="
 read domain
 
