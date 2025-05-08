@@ -25,6 +25,7 @@ alias l='ls $LS_OPTIONS -lF'
 # alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias h='history'
+alias ls='ls --color'
 EOF
 
 # vim config
